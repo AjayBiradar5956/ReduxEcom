@@ -1,0 +1,10 @@
+.navbarContainer {
+    height: 10vh;
+    width: 100%;
+    background-color: orange;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
