@@ -1,10 +1,44 @@
 {
     "products": [
         {
+            "userId": "1",
             "name": "Iphone",
             "description": "Mfg. By: Apple Inc. 128GB|16GB",
             "price": "50000",
-            "rating": "9.5"
+            "rating": "9.5",
+            "img": "./utils/iphone.jpg"
+        },
+        {
+            "userId": "2",
+            "name": "Hand Bag",
+            "description": "Hand Bag, color: black",
+            "price": "500",
+            "rating": "7",
+            "img": "./utils/handbag.jpg"
+        },
+        {
+            "userId": "3",
+            "name": "Toy Car",
+            "description": "Mfg. By: Buggati Inc. 128HP",
+            "price": "5000",
+            "rating": "8",
+            "img": "./utils/toyCar.jpg"
+        },
+        {
+            "userId": "4",
+            "name": "Necklace",
+            "description": "Mfg. By: Cartier Inc. 12 Carat",
+            "price": "20000",
+            "rating": "5",
+            "img": "./utils/necklace.jpg"
+        },
+        {
+            "userId": "5",
+            "name": "Watch",
+            "description": "Mfg. By: Rolex Night-Solar Edition",
+            "price": "60000",
+            "rating": "10",
+            "img": "./utils/watch.jpg"
         }
     ]
 }
