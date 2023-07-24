@@ -1,5 +1,5 @@
 import Navbar from './Navbar';
-import Cart from './Cart';
+import Cart from './Products';
 import React from 'react';
 class App extends React.Component {
   render() {
