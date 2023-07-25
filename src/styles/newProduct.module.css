@@ -1,0 +1,30 @@
+.container {
+    background-color: #fbe3e8;
+    width: 40vw;
+    margin: auto;
+    text-align: left;
+    position: relative;
+    padding-bottom: 35px;
+}
+
+.container form>h3,
+input,
+h1 {
+    margin: 15px 0px 5px 20px;
+    font-family: sans-serif;
+}
+
+.container form>input {
+    height: 30px;
+    width: 90%;
+}
+
+.container form>button {
+    position: absolute;
+    right: 30px;
+    bottom: 0px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 80px;
+    font-size: 1.7rem;
+}

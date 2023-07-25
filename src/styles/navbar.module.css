@@ -8,3 +8,31 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.addProduct:hover {
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.addProduct {
+    position: absolute;
+    right: 400px;
+}
+
+.viewCart:hover {
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.viewCart {
+    position: absolute;
+    right: 250px;
+}
+
+.home:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: red;
+}
