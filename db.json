@@ -1,7 +1,7 @@
 {
     "products": [
         {
-            "userId": "1",
+            "id": "1",
             "name": "Iphone",
             "description": "Mfg. By: Apple Inc. 128GB|16GB",
             "price": "50000",

@@ -37,7 +37,7 @@ class HomePage extends React.Component {
                     <></>
                 }
                 {displayView.map((data, index) => {
-                    return <div className={styles.productItem} key={data.userId}>
+                    return <div className={styles.productItem} key={data.id}>
 
                         {/* Seriel Number */}
                         <span className={styles.productSeriel}>
@@ -66,14 +66,14 @@ class HomePage extends React.Component {
                             ?
                             <>
                                 <span>
-                                    <button className={styles.addToCart} onClick={() => { this.handleRemoveToCart(data.userId) }}>
+                                    <button className={styles.addToCart} onClick={() => { this.handleRemoveToCart(data.id) }}>
                                         REMOVE
                                     </button>
                                 </span></>
                             :
                             <>
                                 <span>
-                                    <button className={styles.addToCart} onClick={() => { this.handleAddToCart(data.userId) }}>
+                                    <button className={styles.addToCart} onClick={() => { this.handleAddToCart(data.id) }}>
                                         ADD TO CART
                                     </button>
                                 </span>
