@@ -9,7 +9,7 @@
             "img": "/img/iphone.jpg"
         },
         {
-            "userId": "2",
+            "id": "2",
             "name": "Hand Bag",
             "description": "Hand Bag, color: black",
             "price": "500",
@@ -17,7 +17,7 @@
             "img": "/img/handbag.jpg"
         },
         {
-            "userId": "3",
+            "id": "3",
             "name": "Toy Car",
             "description": "Mfg. By: Buggati Inc. 128HP",
             "price": "5000",
@@ -25,7 +25,7 @@
             "img": "/img/toyCar.jpg"
         },
         {
-            "userId": "4",
+            "id": "4",
             "name": "Necklace",
             "description": "Mfg. By: Cartier Inc. 12 Carat",
             "price": "20000",
@@ -33,7 +33,7 @@
             "img": "/img/necklace.jpg"
         },
         {
-            "userId": "5",
+            "id": "5",
             "name": "Watch",
             "description": "Mfg. By: Rolex Night-Solar Edition",
             "price": "60000",
