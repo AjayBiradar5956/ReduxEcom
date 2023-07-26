@@ -1,6 +1,7 @@
 .container {
     background-color: #fbe3e8;
-    width: 40vw;
+    width: 35vw;
+    height: 75vh;
     margin: auto;
     text-align: left;
     position: relative;
@@ -14,8 +15,13 @@ h1 {
     font-family: sans-serif;
 }
 
+.container form>h3 {
+    margin-top: 3px;
+}
+
 .container form>input {
     height: 30px;
+    margin-top: 5px;
     width: 90%;
 }
 
@@ -27,4 +33,14 @@ h1 {
     height: 40px;
     width: 80px;
     font-size: 1.7rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+}
+
+.container form>button:hover {
+    background-color: cadetblue;
+    color: white;
+    border: none;
 }

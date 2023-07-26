@@ -1,7 +1,8 @@
 import React from "react";
 import styles from '../styles/newProduct.module.css';
 import { connect } from 'react-redux';
-// import { addNewProduct } from "../actions";
+import { addNewProduct } from "../actions";
+import { toast } from 'react-toastify';
 
 class NewProduct extends React.Component {
     handleNewProductSubmit = (e) => {
@@ -11,20 +12,16 @@ class NewProduct extends React.Component {
         const description = e.target.elements.description.value;
         const price = e.target.elements.price.value;
         const rating = e.target.elements.rating.value;
+        const img = e.target.elements.img.value;
 
-        // // Display the entered values in the console
-        // console.log("New Product Details:");
-        // console.log("Name:", name);
-        // console.log("Description:", description);
-        // console.log("Price:", price);
-        // console.log("Rating:", rating);
         const number = (this.props.products.length) + 1;
         const newProduct = {
-            userId: number,
+            id: number,
             name,
             description,
             price,
-            rating
+            rating,
+            img,
         }
         return fetch("https://my-json-server.typicode.com/ajaybiradar5956/ReduxEcom/products", {
             method: "POST",
@@ -42,20 +39,21 @@ class NewProduct extends React.Component {
             })
             .then((data) => {
                 console.log("New product added:", data);
-                // Perform any other actions here based on the response from the server
+                toast.success('Added Product Successfully');
+                this.props.dispatch(addNewProduct(data));
+
             })
             .catch((error) => {
                 console.error("Error adding new product:", error.message);
                 console.log("Response from the server:", error.response);
             });
 
-        // this.props.dispatch(addNewProduct(newProduct));
 
     }
     render() {
         return (
             <div className={styles.container}>
-                <h1 style={{ paddingTop: '10px' }}>Add a Product</h1>
+                <h1 style={{ paddingTop: '10px', paddingBottom: '10px' }}>Add a Product</h1>
                 <form onSubmit={this.handleNewProductSubmit}>
                     <h3>Name</h3>
                     <input name="name" />
@@ -65,6 +63,8 @@ class NewProduct extends React.Component {
                     <input name="price" />
                     <h3>Rating</h3>
                     <input name="rating" />
+                    <h3>Image URL</h3>
+                    <input name="img" />
                     <br></br>
                     <br></br>
                     <button>Add</button>

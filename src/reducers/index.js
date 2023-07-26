@@ -4,7 +4,8 @@ import {
     REMOVE_FROM_CART,
     SET_SHOW_CART,
     SET_ADD_A_NEW_PRODUCT,
-    ADD_NEW_PRODUCT
+    ADD_NEW_PRODUCT,
+    DELETE_PRODUCT,
 }
     from "../actions";
 
@@ -16,14 +17,16 @@ const inititalState = {
 }
 
 export function product(state = inititalState, action) {
+    console.log(state.products);
     switch (action.type) {
         case ADD_PRODUCT:
+            console.log("rendering get");
             return {
                 ...state,
                 products: action.products,
             }
         case ADD_TO_CART:
-            const productToAdd = state.products.find((item) => item.userId === action.id);
+            const productToAdd = state.products.find((item) => item.id === action.id);
             return {
                 ...state,
                 cartItems: [productToAdd, ...state.cartItems],
@@ -34,22 +37,28 @@ export function product(state = inititalState, action) {
                 setShowCart: action.val,
             }
         case REMOVE_FROM_CART:
-            state.cartItems = state.cartItems.filter((item) => item.userId !== action.id);
+            const updatedCartItems = state.cartItems.filter((item) => item.id !== action.id);
             return {
                 ...state,
-                cartItems: state.cartItems,
-            }
+                cartItems: updatedCartItems,
+            };
         case SET_ADD_A_NEW_PRODUCT:
             return {
                 ...state,
                 toAddNewProduct: action.val,
             }
         case ADD_NEW_PRODUCT:
-            console.log(state.products);
             return {
                 ...state,
-                products: [...state.products, action.obj],
+                products: [action.obj, ...state.products],
             }
+        case DELETE_PRODUCT:
+            const productArr = state.products.filter((item) => item.id !== action.id);
+            return {
+                ...state,
+                products: productArr,
+            };
+
         default:
             return state;
     }

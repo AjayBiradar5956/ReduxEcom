@@ -4,6 +4,7 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const SET_SHOW_CART = 'SET_SHOW_CART';
 export const SET_ADD_A_NEW_PRODUCT = 'SET_ADD_A_NEW_PRODUCT';
 export const ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 export function addProducts(products) {
     return {
@@ -44,5 +45,12 @@ export function addNewProduct(obj) {
     return {
         type: ADD_NEW_PRODUCT,
         obj,
+    }
+}
+
+export function deleteProduct(id) {
+    return {
+        type: DELETE_PRODUCT,
+        id,
     }
 }

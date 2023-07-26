@@ -5,17 +5,16 @@ import App from './components/App';
 import { legacy_createStore as createStore } from 'redux';
 import { product } from './reducers';
 import { Provider } from 'react-redux';
-import { ToastProvider } from 'react-toast-notifications';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const store = createStore(product);
-console.log("Before", store);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ToastProvider autoDismiss autoDismissTimeout={5000} placement='top-left'>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ToastProvider>
+    <Provider store={store}>
+      <App />
+      <ToastContainer autoClose={500} position='top-left' />
+    </Provider>
   </React.StrictMode>
 );

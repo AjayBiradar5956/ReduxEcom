@@ -17,11 +17,13 @@ class Navbar extends React.Component {
     }
 
     render() {
-        const { setShowCart, cartItems, toAddNewProduct } = this.props;
+        const { setShowCart, cartItems, toAddNewProduct, products } = this.props;
+        console.log("asufufb", products.length);
         const count = cartItems.length;
         return (
+
             <div className={styles.navbarContainer}>
-                <h1 style={{ marginLeft: '25px' }}>
+                <h1 style={{ marginLeft: '25px', cursor: 'pointer' }} className={styles.title} onClick={() => this.handleViewCartClick(false)}>
                     ECOM101
                 </h1>
                 {(setShowCart) || (toAddNewProduct)
@@ -30,11 +32,13 @@ class Navbar extends React.Component {
                     :
                     <></>
                 }
-                <h2
+                <button
                     className={styles.addProduct}
-                    onClick={() => this.handleAddANewProduct(true)}>
+                    onClick={() => this.handleAddANewProduct(true)}
+                    disabled={products.length === 0}
+                >
                     Add a Product
-                </h2>
+                </button>
                 <h2
                     className={styles.viewCart}
                     onClick={() => this.handleViewCartClick(true)}>
@@ -44,12 +48,14 @@ class Navbar extends React.Component {
                     CartItems: {count > 0 ? count : 0}
                 </h2>
             </div>
+
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
+        products: state.products,
         cartItems: state.cartItems,
         setShowCart: state.setShowCart,
         toAddNewProduct: state.toAddNewProduct,

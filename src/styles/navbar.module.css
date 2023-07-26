@@ -9,20 +9,39 @@
     align-items: center;
 }
 
-.addProduct:hover {
-    color: red;
-    text-decoration: underline;
+.title {
+    margin-left: 25px;
     cursor: pointer;
+}
+
+.title:hover {
+    color: darkolivegreen;
+}
+
+
+.addProduct:hover {
+    color: cornflowerblue;
+    cursor: pointer;
+}
+
+.addProduct:disabled {
+    color: burlywood;
 }
 
 .addProduct {
     position: absolute;
     right: 400px;
+    border: none;
+    background-color: inherit;
+    font-size: 1.5rem;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-top: 5px;
 }
 
 .viewCart:hover {
-    color: red;
-    text-decoration: underline;
+    color: cornflowerblue;
     cursor: pointer;
 }
 
