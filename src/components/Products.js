@@ -1,5 +1,5 @@
 import React from 'react';
-import NewProduct from '../pages/NewProduct';
+import NewProduct from '../pages/NewProductPage';
 import HomePage from '../pages/HomePage';
 import DetailPage from '../pages/DetailPage';
 import { connect } from 'react-redux';
@@ -8,14 +8,12 @@ class Products extends React.Component {
     render() {
         const { toAddNewProduct, setViewPage } = this.props;
         if (toAddNewProduct) {
-            return <NewProduct />;
+            return <NewProduct />
         } else if (!toAddNewProduct && setViewPage) {
             return <DetailPage />
+        } else {
+            return <HomePage />
         }
-        else {
-            return <HomePage />;
-        }
-
     }
 }
 

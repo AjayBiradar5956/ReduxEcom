@@ -14,7 +14,7 @@ class Navbar extends React.Component {
         if (this.props.toAddNewProduct) {
             this.props.dispatch(setAddANewProduct(val));
         } else if (this.props.setViewPage) {
-            this.props.dispatch(setViewPage(val));
+            this.props.dispatch(setViewPage(val, ''));
         }
     }
 
@@ -41,11 +41,18 @@ class Navbar extends React.Component {
                 >
                     Add a Product
                 </button>
-                <h2
-                    className={styles.viewCart}
-                    onClick={() => this.handleViewCartClick(true)}>
-                    View Cart
-                </h2>
+
+                {setViewPage
+                    ?
+                    <></>
+                    :
+                    <h2
+                        className={styles.viewCart}
+                        onClick={() => this.handleViewCartClick(true)}>
+                        View Cart
+                    </h2>
+                }
+
                 <h2 style={{ marginRight: '50px' }}>
                     CartItems: {count > 0 ? count : 0}
                 </h2>

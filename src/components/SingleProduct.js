@@ -22,11 +22,11 @@ class SingleProduct extends React.Component {
         this.props.dispatch(deleteProduct(id));
     }
 
-    handleView = (val) => {
+    handleView = (val, id) => {
         toast.success("Product Details", {
             position: 'top-center',
         })
-        this.props.dispatch(setViewPage(val));
+        this.props.dispatch(setViewPage(val, id));
     }
     render() {
         const { data } = this.props;
@@ -44,32 +44,18 @@ class SingleProduct extends React.Component {
                     </span>
                 }
 
-
                 {/* Product Img */}
                 <img src={data.img} alt={data.name} />
 
                 {/* Product Name and price */}
-                <ul className={styles.productItemDetail}>
-                    <li>
-                        <h1 style={{ position: 'absolute', left: '0px', top: '0px' }} >{data.name}</h1>
-                    </li>
-                    <li>
-                        <h3 style={{ position: 'absolute', left: '20px', top: '40px' }}>
-                            Price: {data.price}</h3>
-                    </li>
-                    {/* <li>
-                                <h3 style={{ position: 'absolute', left: '20px', top: '70px' }}>Rating: {data.rating}
-                                </h3>
-                            </li> */}
-                </ul>
-
-                {/* Product Description
-                        <span>
-                            <ul className={styles.productItemDescription}>
-                                <li><h3>Description:</h3></li>
-                                <li><p style={{ wordWrap: 'break-word' }}>{data.description}</p></li>
-                            </ul>
-                        </span> */}
+                <div className={styles.productItemDetail}>
+                    <h1 style={{ position: 'absolute', left: '0px', top: '0px' }}>
+                        {data.name}
+                    </h1>
+                    <h3 style={{ position: 'absolute', left: '20px', top: '40px' }}>
+                        Price: {data.price}
+                    </h3>
+                </div>
 
                 {/* Buttons */}
                 {setShowCart
@@ -94,7 +80,7 @@ class SingleProduct extends React.Component {
                             </i>
                         </span>
 
-                        <span className={styles.onh} onClick={() => { this.handleView(true) }}>
+                        <span className={styles.onh} onClick={() => { this.handleView(true, data.id) }}>
                             <i class="fa-solid fa-eye"
                                 style={{ position: 'absolute', right: '75px', fontSize: '1.8rem', top: '60px' }}>
                             </i>
@@ -104,10 +90,10 @@ class SingleProduct extends React.Component {
                                 style={{ position: 'absolute', right: '25px', fontSize: '1.8rem', top: '60px' }}
                                 onClick={() => { this.handleDelete(data.id) }}
                             >
-
                             </i>
                         </span>
-                    </>}
+                    </>
+                }
             </div>
         )
     }

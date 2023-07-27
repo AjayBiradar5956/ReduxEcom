@@ -56,9 +56,10 @@ export function deleteProduct(id) {
     }
 }
 
-export function setViewPage(val) {
+export function setViewPage(val, id) {
     return {
         type: SET_VIEW_PAGE,
         val,
+        id
     }
 }

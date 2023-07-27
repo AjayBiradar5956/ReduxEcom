@@ -16,6 +16,7 @@ const inititalState = {
     setShowCart: false,
     toAddNewProduct: false,
     setViewPage: false,
+    viewId: null,
 }
 
 export function product(state = inititalState, action) {
@@ -31,7 +32,7 @@ export function product(state = inititalState, action) {
             const productToAdd = state.products.find((item) => item.id === action.id);
             return {
                 ...state,
-                cartItems: [productToAdd, ...state.cartItems],
+                cartItems: [...state.cartItems, productToAdd],
             }
         case SET_SHOW_CART:
             return {
@@ -52,7 +53,7 @@ export function product(state = inititalState, action) {
         case ADD_NEW_PRODUCT:
             return {
                 ...state,
-                products: [action.obj, ...state.products],
+                products: [...state.products, action.obj],
             }
         case DELETE_PRODUCT:
             const productArr = state.products.filter((item) => item.id !== action.id);
@@ -64,6 +65,7 @@ export function product(state = inititalState, action) {
             return {
                 ...state,
                 setViewPage: action.val,
+                viewId: action.id,
             }
 
         default:

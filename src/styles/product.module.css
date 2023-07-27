@@ -37,7 +37,7 @@
 .productItemDetail {
     position: absolute;
     left: 180px;
-    top: 0;
+    top: 15px;
     list-style: none;
     font-size: 1rem;
     font-weight: 600;
