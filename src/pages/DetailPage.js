@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import styles from '../styles/detail.module.css';
 import { toast } from 'react-toastify';
-import { addToCart } from '../actions';
+import { addToCart, setViewPage } from '../actions';
 
 class DetailPage extends React.Component {
     handleAddToCart = (id) => {
@@ -11,8 +11,12 @@ class DetailPage extends React.Component {
         });
         this.props.dispatch(addToCart(id));
     }
+
+    handleBack = (val, id) => {
+        this.props.dispatch(setViewPage(val, ''));
+    }
     render() {
-        const { products, viewId, setShowCart } = this.props;
+        const { products, viewId } = this.props;
         const data = products.find((item) => item.id === viewId);
         console.log(data);
         return (
@@ -49,37 +53,27 @@ class DetailPage extends React.Component {
                         </ul>
                     </span>
 
-                    {/* Buttons */}
-                    {setShowCart
-                        ?
-                        <>
-                            <span>
-                                <button className={styles.addToCart} onClick={() => { this.handleRemoveToCart(data.id) }}>
-                                    REMOVE
-                                </button>
-                            </span></>
-                        :
-                        <>
-                            <span>
-                                <button className={styles.addToCart} onClick={() => { this.handleAddToCart(data.id) }}>
-                                    ADD TO CART
-                                </button>
-                            </span>
+                    <span>
+                        <button className={styles.addToCart} onClick={() => { this.handleAddToCart(data.id) }}>
+                            ADD TO CART
+                        </button>
+                    </span>
 
-                        </>
-                    }
+                    <div>
+                        <button className={styles.back} onClick={() => { this.handleBack(false) }}>
+                            BACK HOME
+                        </button>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-
 function mapStateToProps(state) {
     return {
         products: state.products,
         viewId: state.viewId,
-        setShowCart: state.setShowCart,
     }
 }
 

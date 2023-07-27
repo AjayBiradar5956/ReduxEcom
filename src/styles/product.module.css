@@ -109,3 +109,14 @@
     color: white;
     cursor: pointer;
 }
+
+.editForm>input {
+    left: -20px;
+    position: absolute;
+    top: 10px;
+}
+
+.editForm>button {
+    position: absolute;
+    top: 90px;
+}

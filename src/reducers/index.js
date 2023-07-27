@@ -7,6 +7,8 @@ import {
     ADD_NEW_PRODUCT,
     DELETE_PRODUCT,
     SET_VIEW_PAGE,
+    SET_EDIT,
+    UPDATE_VALUE
 }
     from "../actions";
 
@@ -17,6 +19,10 @@ const inititalState = {
     toAddNewProduct: false,
     setViewPage: false,
     viewId: null,
+    setEdit: {
+        val: false,
+        id: null
+    }
 }
 
 export function product(state = inititalState, action) {
@@ -67,6 +73,33 @@ export function product(state = inititalState, action) {
                 setViewPage: action.val,
                 viewId: action.id,
             }
+        case SET_EDIT:
+            return {
+                ...state,
+                setEdit: {
+                    val: action.val,
+                    id: action.id,
+                },
+            }
+        case UPDATE_VALUE:
+            const findIndex = state.products.findIndex((item) => item.id === action.obj.id);
+            if (findIndex !== -1) {
+                const updatedProd = {
+                    ...state.products[findIndex],
+                    name: action.obj.name,
+                    price: action.obj.price,
+                }
+                const updatedArray = [
+                    ...state.products.slice(0, findIndex),
+                    updatedProd,
+                    ...state.products.slice(findIndex + 1)
+                ]
+                return {
+                    ...state,
+                    products: updatedArray,
+                }
+            }
+            return state;
 
         default:
             return state;

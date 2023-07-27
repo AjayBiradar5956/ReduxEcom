@@ -6,6 +6,8 @@ export const SET_ADD_A_NEW_PRODUCT = 'SET_ADD_A_NEW_PRODUCT';
 export const ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const SET_VIEW_PAGE = 'SET_VIEW_PAGE';
+export const SET_EDIT = 'SET_EDIT';
+export const UPDATE_VALUE = 'UPDATE_VALUE';
 
 export function addProducts(products) {
     return {
@@ -61,5 +63,20 @@ export function setViewPage(val, id) {
         type: SET_VIEW_PAGE,
         val,
         id
+    }
+}
+
+export function setEdit(val, id) {
+    return {
+        type: SET_EDIT,
+        val,
+        id,
+    }
+}
+
+export function updateValue(obj) {
+    return {
+        type: UPDATE_VALUE,
+        obj,
     }
 }
