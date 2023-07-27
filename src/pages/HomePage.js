@@ -92,8 +92,8 @@ class HomePage extends React.Component {
                     ? <h2 style={{ textAlign: 'center', fontWeight: '500' }}>No Items added to Cart</h2>
                     : <></>
                 }
-                {sortedDisplayView.map((data) => {
-                    return <SingleProduct data={data} key={data.id} />
+                {sortedDisplayView.map((data, index) => {
+                    return <SingleProduct data={data} index={index} key={data.id} />
                 })}
             </div>
         )

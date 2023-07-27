@@ -22,11 +22,19 @@ class SingleProduct extends React.Component {
     }
 
     handleAddToCart = (id) => {
-        toast.success("Added to Cart", {
-            position: 'top-center',
-        });
-        this.props.dispatch(addToCart(id));
-    }
+        const itemExists = this.props.cartItems.some((item) => item.id === id);
+
+        if (itemExists) {
+            toast.warn("Item is already in the cart", {
+                position: 'top-center',
+            });
+        } else {
+            toast.success("Added to Cart", {
+                position: 'top-center',
+            });
+            this.props.dispatch(addToCart(id));
+        }
+    };
 
     handleRemoveToCart = (id) => {
         toast.success("Removed from Cart");
@@ -72,13 +80,21 @@ class SingleProduct extends React.Component {
     };
 
     render() {
-        const { data } = this.props;
+
+        const { data, index } = this.props;
         const { setShowCart, setEdit } = this.props;
 
         return (
             <div className={styles.productItem} key={data.id}>
                 {/* Seriel Number */}
-                {setShowCart ? <></> : <span className={styles.productSeriel}>{`${data.id}.`}</span>}
+                {setShowCart
+                    ?
+                    <></>
+                    :
+                    <span className={styles.productSeriel}>
+                        {`${index + 1}.`}
+                    </span>
+                }
 
                 {/* Product Img */}
                 <img src={data.img} alt={data.name} />
@@ -161,6 +177,7 @@ function mapStateToProps(state) {
     return {
         setShowCart: state.setShowCart,
         setEdit: state.setEdit,
+        cartItems: state.cartItems,
     }
 }
 

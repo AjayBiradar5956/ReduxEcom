@@ -20,7 +20,6 @@ class Navbar extends React.Component {
 
     render() {
         const { setShowCart, cartItems, toAddNewProduct, products, setViewPage } = this.props;
-        console.log("asufufb", products.length);
         const count = cartItems.length;
         return (
 

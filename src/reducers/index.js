@@ -26,20 +26,22 @@ const inititalState = {
 }
 
 export function product(state = inititalState, action) {
-    console.log(state.products);
     switch (action.type) {
         case ADD_PRODUCT:
-            console.log("rendering get");
             return {
                 ...state,
                 products: action.products,
             }
         case ADD_TO_CART:
+            const itemExists = state.cartItems.some((item) => item.id === action.id);
+            if (itemExists) {
+                return state;
+            }
             const productToAdd = state.products.find((item) => item.id === action.id);
             return {
                 ...state,
                 cartItems: [...state.cartItems, productToAdd],
-            }
+            };
         case SET_SHOW_CART:
             return {
                 ...state,
@@ -63,9 +65,11 @@ export function product(state = inititalState, action) {
             }
         case DELETE_PRODUCT:
             const productArr = state.products.filter((item) => item.id !== action.id);
+            const cartArr = state.cartItems.filter((item) => item.id !== action.id);
             return {
                 ...state,
                 products: productArr,
+                cartItems: cartArr,
             };
         case SET_VIEW_PAGE:
             return {

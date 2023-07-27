@@ -6,11 +6,19 @@ import { addToCart, setViewPage } from '../actions';
 
 class DetailPage extends React.Component {
     handleAddToCart = (id) => {
-        toast.success("Added to Cart", {
-            position: 'top-center',
-        });
-        this.props.dispatch(addToCart(id));
-    }
+        const itemExists = this.props.cartItems.some((item) => item.id === id);
+
+        if (itemExists) {
+            toast.warn("Item is already in the cart", {
+                position: 'top-center',
+            });
+        } else {
+            toast.success("Added to Cart", {
+                position: 'top-center',
+            });
+            this.props.dispatch(addToCart(id));
+        }
+    };
 
     handleBack = (val, id) => {
         this.props.dispatch(setViewPage(val, ''));
@@ -18,12 +26,11 @@ class DetailPage extends React.Component {
     render() {
         const { products, viewId } = this.props;
         const data = products.find((item) => item.id === viewId);
-        console.log(data);
         return (
 
             <div className={styles.prodContainer}>
                 <div className={styles.title}>
-                    <h1>Product Detail</h1>
+                    <h1>Product Details</h1>
                 </div>
                 <div className={styles.productItem} key={data.id}>
 
@@ -74,6 +81,7 @@ function mapStateToProps(state) {
     return {
         products: state.products,
         viewId: state.viewId,
+        cartItems: state.cartItems,
     }
 }
 
