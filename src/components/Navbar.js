@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/navbar.module.css';
 import { connect } from 'react-redux';
-import { setShowCart, setAddANewProduct } from '../actions';
+import { setShowCart, setAddANewProduct, setViewPage } from '../actions';
 
 class Navbar extends React.Component {
 
@@ -13,11 +13,13 @@ class Navbar extends React.Component {
         this.props.dispatch(setShowCart(val));
         if (this.props.toAddNewProduct) {
             this.props.dispatch(setAddANewProduct(val));
+        } else if (this.props.setViewPage) {
+            this.props.dispatch(setViewPage(val));
         }
     }
 
     render() {
-        const { setShowCart, cartItems, toAddNewProduct, products } = this.props;
+        const { setShowCart, cartItems, toAddNewProduct, products, setViewPage } = this.props;
         console.log("asufufb", products.length);
         const count = cartItems.length;
         return (
@@ -26,7 +28,7 @@ class Navbar extends React.Component {
                 <h1 style={{ marginLeft: '25px', cursor: 'pointer' }} className={styles.title} onClick={() => this.handleViewCartClick(false)}>
                     ECOM101
                 </h1>
-                {(setShowCart) || (toAddNewProduct)
+                {(setShowCart) || (toAddNewProduct) || (setViewPage)
                     ?
                     <h2 className={styles.home} onClick={() => this.handleViewCartClick(false)}>Go Home</h2>
                     :
@@ -59,6 +61,7 @@ function mapStateToProps(state) {
         cartItems: state.cartItems,
         setShowCart: state.setShowCart,
         toAddNewProduct: state.toAddNewProduct,
+        setViewPage: state.setViewPage,
     }
 }
 

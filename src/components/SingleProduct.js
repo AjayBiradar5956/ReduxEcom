@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import styles from '../styles/product.module.css';
 import { toast } from 'react-toastify';
-import { addToCart, removeFromCart, deleteProduct } from '../actions';
+import { addToCart, removeFromCart, deleteProduct, setViewPage } from '../actions';
 
 class SingleProduct extends React.Component {
     handleAddToCart = (id) => {
@@ -20,6 +20,13 @@ class SingleProduct extends React.Component {
     handleDelete = (id) => {
         toast.success("Product Deleted");
         this.props.dispatch(deleteProduct(id));
+    }
+
+    handleView = (val) => {
+        toast.success("Product Details", {
+            position: 'top-center',
+        })
+        this.props.dispatch(setViewPage(val));
     }
     render() {
         const { data } = this.props;
@@ -87,7 +94,7 @@ class SingleProduct extends React.Component {
                             </i>
                         </span>
 
-                        <span className={styles.onh}>
+                        <span className={styles.onh} onClick={() => { this.handleView(true) }}>
                             <i class="fa-solid fa-eye"
                                 style={{ position: 'absolute', right: '75px', fontSize: '1.8rem', top: '60px' }}>
                             </i>
