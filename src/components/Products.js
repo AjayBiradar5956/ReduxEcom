@@ -5,23 +5,23 @@ import { connect } from 'react-redux';
 
 class Products extends React.Component {
     render() {
-        const { toAddNewProduct } = this.props;
-        return (
-            <div>
-                {toAddNewProduct
-                    ?
-                    <NewProduct />
-                    :
-                    <HomePage />
-                }
-            </div>
-        )
+        const { toAddNewProduct, setViewPage } = this.props;
+        if (toAddNewProduct) {
+            return <NewProduct />;
+        } else if (!toAddNewProduct && setViewPage) {
+            return <h1>hi</h1>
+        }
+        else {
+            return <HomePage />;
+        }
+
     }
 }
 
 function mapStateToProps(state) {
     return {
         toAddNewProduct: state.toAddNewProduct,
+        setViewPage: state.setViewPage,
     }
 }
 

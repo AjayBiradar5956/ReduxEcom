@@ -6,6 +6,7 @@ import {
     SET_ADD_A_NEW_PRODUCT,
     ADD_NEW_PRODUCT,
     DELETE_PRODUCT,
+    SET_VIEW_PAGE,
 }
     from "../actions";
 
@@ -14,6 +15,7 @@ const inititalState = {
     cartItems: [],
     setShowCart: false,
     toAddNewProduct: false,
+    setViewPage: false,
 }
 
 export function product(state = inititalState, action) {
@@ -58,6 +60,11 @@ export function product(state = inititalState, action) {
                 ...state,
                 products: productArr,
             };
+        case SET_VIEW_PAGE:
+            return {
+                ...state,
+                setViewPage: action.val,
+            }
 
         default:
             return state;

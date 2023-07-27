@@ -5,6 +5,7 @@ export const SET_SHOW_CART = 'SET_SHOW_CART';
 export const SET_ADD_A_NEW_PRODUCT = 'SET_ADD_A_NEW_PRODUCT';
 export const ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const SET_VIEW_PAGE = 'SET_VIEW_PAGE';
 
 export function addProducts(products) {
     return {
@@ -52,5 +53,12 @@ export function deleteProduct(id) {
     return {
         type: DELETE_PRODUCT,
         id,
+    }
+}
+
+export function setViewPage(val) {
+    return {
+        type: SET_VIEW_PAGE,
+        val,
     }
 }
